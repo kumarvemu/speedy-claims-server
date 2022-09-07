@@ -6,7 +6,7 @@ import com.allstate.speedyclaimsserver.domain.*;
 //import com.allstate.speedyclaimsserver.service.ClaimStatusService;
 //import com.allstate.speedyclaimsserver.service.InsuranceTypeService;
 //import org.springframework.beans.factory.annotation.Autowired;
-        import java.time.LocalDate;
+import java.time.LocalDate;
 
 public class NewClaimDTO {
 //    @Autowired
@@ -38,33 +38,6 @@ public class NewClaimDTO {
     public Claim toClaim() {
         Claim claim = new Claim(null, policyNumber, null, null, LocalDate.now(), claimStartedDate, customerFirstName, customerSurname, estimatedClaimValue,
                 claimReason, incidentDescription, null, relatedIncidentDate, anyFurtherDetails, null, null, null, null, null, null, null, null);
-
-//        //Find status - use 1st status for new Claim
-//        ClaimStatus claimStatus = claimStatusService.getClaimStatusById(1);
-//        claim.setStatus(claimStatus);
-//
-//        //Find insurance type
-//        claim.setInsuranceType(insuranceTypeService.getInsuranceTypeById(Integer.getInteger(insuranceType)));
-//
-//        //Check insurance type and set fields depending on type
-//        switch (claim.getInsuranceType().getDetail()) {
-//            case "Property":
-//                claim.setAffectedAddress(affectedAddress);
-//                break;
-//            case "Motor":
-//                claim.setMake(make);
-//                claim.setModel(model);
-//                claim.setModelYear(modelYear);
-//                break;
-//            case "Pet":
-//                claim.setAnimalBreed(animalBreed);
-//                claim.setAnimalType(animalType);
-//                break;
-//            default:
-//                //invalid insurance Type found exception
-//                throw new InvalidInsuranceTypeException("Invalid Insurance Type '" + claim.getInsuranceType().getDetail() + "' selected when creating a new claim");
-//        }
-
         return claim;
     }
 
