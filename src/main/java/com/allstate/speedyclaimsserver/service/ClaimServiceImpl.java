@@ -1,7 +1,8 @@
 package com.allstate.speedyclaimsserver.service;
 
 import com.allstate.speedyclaimsserver.data.ClaimRepository;
-import com.allstate.speedyclaimsserver.domain.*;
+import com.allstate.speedyclaimsserver.domain.Claim;
+import com.allstate.speedyclaimsserver.domain.Note;
 import com.allstate.speedyclaimsserver.dto.NewClaimDTO;
 import com.allstate.speedyclaimsserver.exception.ClaimNotFoundException;
 import com.allstate.speedyclaimsserver.exception.InvalidInsuranceTypeException;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +30,7 @@ public class ClaimServiceImpl implements ClaimService {
     ClaimStatusService claimStatusService;
 
     Logger logger = LoggerFactory.getLogger(ClaimService.class);
-    private  String errorMessage;
+    private String errorMessage;
 
     @Override
     public List<Claim> getAllClaims() {
@@ -139,14 +141,16 @@ public class ClaimServiceImpl implements ClaimService {
         if (data.containsKey("insuranceType")) {
             claim.setInsuranceType(insuranceTypeService.getInsuranceTypeById(Integer.parseInt(data.get("insuranceType"))));
         }
-        if (data.containsKey("claimStartedDate")) claim.setClaimStartedDate(LocalDate.parse(data.get("claimStartedDate")));
+        if (data.containsKey("claimStartedDate"))
+            claim.setClaimStartedDate(LocalDate.parse(data.get("claimStartedDate")));
         if (data.containsKey("customerFirstName")) claim.setCustomerFirstName(data.get("customerFirstName"));
         if (data.containsKey("customerSurname")) claim.setCustomerSurname(data.get("customerSurname"));
         if (data.containsKey("estimatedClaimValue")) claim.setEstimatedClaimValue(data.get("estimatedClaimValue"));
         if (data.containsKey("claimReason")) claim.setClaimReason(data.get("claimReason"));
         if (data.containsKey("incidentDescription")) claim.setIncidentDescription(data.get("incidentDescription"));
         if (data.containsKey("affectedAddress")) claim.setAffectedAddress(data.get("affectedAddress"));
-        if (data.containsKey("relatedIncidentDate")) claim.setRelatedIncidentDate(LocalDate.parse(data.get("relatedIncidentDate")));
+        if (data.containsKey("relatedIncidentDate"))
+            claim.setRelatedIncidentDate(LocalDate.parse(data.get("relatedIncidentDate")));
         if (data.containsKey("anyFurtherDetails")) claim.setAnyFurtherDetails(data.get("anyFurtherDetails"));
         if (data.containsKey("amountPaid")) claim.setAmountPaid(data.get("amountPaid"));
         if (data.containsKey("make")) claim.setMake(data.get("make"));
@@ -160,7 +164,7 @@ public class ClaimServiceImpl implements ClaimService {
 
     //TODO! Check how to return last record
     @Override
-    public List<Note> addNote(Map<String,String> noteDetail, Integer claimId) {
+    public List<Note> addNote(Map<String, String> noteDetail, Integer claimId) {
         Claim currentClaim = getClaimById(claimId);
 
         Note newNote = new Note(null, noteDetail.get("detail"), LocalDate.now(), currentClaim);

@@ -4,6 +4,8 @@ import com.allstate.speedyclaimsserver.domain.Note;
 import com.allstate.speedyclaimsserver.domain.Task;
 import com.allstate.speedyclaimsserver.dto.NewClaimDTO;
 import com.allstate.speedyclaimsserver.service.ClaimService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +21,13 @@ public class ClaimController {
     @Autowired
     private ClaimService claimService;
 
+    Logger logger = LoggerFactory.getLogger(ClaimController.class);
+
     @GetMapping()
     public List<Claim> getAll(@RequestParam(value = "surname", required = false) String surname,
                               @RequestParam(value = "policyNumber", required = false) String policyNumber,
                               @RequestParam(value = "open", required = false) String open) {
+        logger.info("Iinside getAll "+ surname);
         if (surname != null) {
             return claimService.getAllClaimsForCustomerSurname(surname);
         }

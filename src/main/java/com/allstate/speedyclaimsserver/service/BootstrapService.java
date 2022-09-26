@@ -49,12 +49,6 @@ public class BootstrapService {
         }
 
         if (claimStatusService.countClaimStatuses() == 0) {
-//            { id: 1, open: true, detail: "Awaiting Assessment" },
-//            { id: 2, open: true, detail: "In Progress" },
-//            { id: 3, open: true, detail: "Awaiting Payment" },
-//            { id: 4, open: false, detail: "Accepted & Paid" },
-//            { id: 5, open: false, detail: "Transferred to Main Claims" },
-//            { id: 6, open: false, detail: "Rejected" }
             claimStatusRepository.save(new ClaimStatus(null, "Awaiting Assessment", true));
             claimStatusRepository.save(new ClaimStatus(null, "In Progress", true));
             claimStatusRepository.save(new ClaimStatus(null, "Awaiting Payment", true));
@@ -65,30 +59,10 @@ public class BootstrapService {
 
 
         if (taskStatusService.countTaskStatuses() == 0) {
-//            { id: 101, value: 1, detail: "Open" },
-//            { id: 102, value: 2, detail: "Closed" }
             taskStatusRepository.save(new TaskStatus(null, 1, "Open"));
             taskStatusRepository.save(new TaskStatus(null, 2, "Closed"));
         }
 
-//        {
-//            id: 101, number: "1234567890", policy_number: "156725657625", status: 1, insurance_type: "Property", created_date: "2017-01-31",
-//                claim_started_date: "2017-01-31", customer_first_name: "John", customer_surname: "Doe", estimated_claim_value: "100", claim_reason: "It broke",
-//                incident_description: "Something went wrong", affected_address: "1 Main Street, Main Town", related_claim_date: "2017-01-31", any_further_details: "None",
-//                amount_paid: "100", make: "Skoda", model: "Fabia", modelYear: "1990", animal_type: "horse", animal_breed: "big"
-//        },
-//        {
-//            id: 102, number: "9234567890", policy_number: "156725657625", status: 6, insurance_type: "Motor", created_date: "2017-01-31",
-//                claim_started_date: "2017-01-31", customer_first_name: "Tom", customer_surname: "Doe", estimated_claim_value: "100", claim_reason: "It broke",
-//                incident_description: "Something went wrong", affected_address: "1 Main Street, Main Town", related_claim_date: "2017-01-31", any_further_details: "None",
-//                amount_paid: "100", make: "Skoda", model: "Fabia", modelYear: "1990", animal_type: "horse", animal_breed: "big"
-//        },
-//        {
-//            id: 103, number: "5555678901", policy_number: "987625657625", status: 2, insurance_type: "Motor", created_date: "2017-01-31",
-//                claim_started_date: "2017-01-31", customer_first_name: "Mary", customer_surname: "Jones", estimated_claim_value: "100", claim_reason: "It broke",
-//                incident_description: "Something went wrong", affected_address: "1 Main Street, Main Town", related_claim_date: "2017-01-31", any_further_details: "None",
-//                amount_paid: "100", make: "Skoda", model: "Fabia", modelYear: "1990", animal_type: "", animal_breed: ""
-//        },
 
         if (claimService.countClaims() == 0) {
             ClaimStatus claimStatus1 = claimStatusService.getClaimStatusById(1);

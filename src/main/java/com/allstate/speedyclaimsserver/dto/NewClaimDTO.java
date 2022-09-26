@@ -9,12 +9,6 @@ import com.allstate.speedyclaimsserver.domain.*;
 import java.time.LocalDate;
 
 public class NewClaimDTO {
-//    @Autowired
-//    InsuranceTypeService insuranceTypeService;
-//
-//    @Autowired
-//    ClaimStatusService claimStatusService;
-
     private String policyNumber;
     private String insuranceType;
     private LocalDate claimStartedDate;

@@ -1,6 +1,5 @@
 package com.allstate.speedyclaimsserver.dto;
 
-
 import com.allstate.speedyclaimsserver.domain.Task;
 import com.allstate.speedyclaimsserver.domain.TaskStatus;
 

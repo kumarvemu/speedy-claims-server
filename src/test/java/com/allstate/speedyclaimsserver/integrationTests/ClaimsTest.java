@@ -24,7 +24,7 @@ import org.springframework.boot.test.json.JsonContentAssert;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
-import org.springframework.security.test.context.support.WithMockUser;
+//import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
@@ -88,8 +88,7 @@ public class ClaimsTest {
                 .thenReturn(Optional.of(claimInsType));
     }
 
-//    @Test
-//    @WithMockUser(username="testuser", password="testpassword", roles={"MANAGER"})
+   @Test
     public void checkNewClaimsAreAddedToDatabase() throws Exception {
         NewClaimDTO newClaim = new NewClaimDTO();
         newClaim.setPolicyNumber("1111111116");

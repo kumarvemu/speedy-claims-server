@@ -5,12 +5,6 @@ package com.allstate.speedyclaimsserver.dto;
 
 public class NewTaskDTO {
 
-//    @Autowired
-//    TaskStatusService taskStatusService;
-//
-//    @Autowired
-//    ClaimService claimService;
-
     private String detail;
     private String taskStatusId;
     private String claimId;
@@ -20,10 +14,6 @@ public class NewTaskDTO {
 
     public Task toTask(){
         Task task = new Task(null, null, detail, null, LocalDate.now());
-
-//        //Find status
-//        task.setStatus(taskStatusService.getTaskStatusById(Integer.parseInt(taskStatusId)));
-//        task.setClaim(claimService.getClaimById(Integer.parseInt(claimId)));
 
         return task;
     }

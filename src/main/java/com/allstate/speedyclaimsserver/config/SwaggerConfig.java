@@ -26,8 +26,8 @@ public class SwaggerConfig {
 
     public ApiInfo generateApiInfo(){
         return new ApiInfoBuilder()
-                .title("Quick Small Claims API")
-                .description("API for Quick Small Claims")
+                .title("Small Claims API")
+                .description("API for Small Claims")
                 .build();
     }
 }
